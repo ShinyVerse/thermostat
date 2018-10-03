@@ -1,6 +1,6 @@
 $(document).ready(function(){
-
   var thermo = new Thermostat;
+  updateThermostat();
   function updateThermostat(){
     $('#temp').text(thermo.temperature);
     // $('#usage').text(thermo.getCurrentEnergyUsage());
@@ -28,4 +28,8 @@ $(document).ready(function(){
       updateThermostat();
   });
 
+  var weather = new Weather;
+  $('#currentWeather').on('click',function(){
+    weather.getCurrent($('#cityInput').val());
+  })
 });
