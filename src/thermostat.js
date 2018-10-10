@@ -10,8 +10,8 @@ Thermostat.prototype.getCurrentTemperature = function() {
   return this.temperature;
 };
 
-Thermostat.prototype.up = function(degrees = 1) {
-  this.temperature += degrees;
+Thermostat.prototype.up = function(degrees) {
+  this.temperature += typeof degrees === 'undefined' ? 1 : degrees;
   if (this.temperature > this.maximumTemp) {
     this.temperature = this.maximumTemp;
     throw new Error('Temp too high')
@@ -19,11 +19,11 @@ Thermostat.prototype.up = function(degrees = 1) {
 };
 
 Thermostat.prototype.down = function(degrees = 1) {
- this.temperature -= degrees;
- if (this.temperature < 10) {
-   this.temperature = 10
-   throw new Error('Temp too low')
- }
+   this.temperature -= degrees;
+   if (this.temperature < 10) {
+     this.temperature = 10
+     throw new Error('Temp too low')
+   }
 };
 
 Thermostat.prototype.getCurrentPowerMode = function(){
